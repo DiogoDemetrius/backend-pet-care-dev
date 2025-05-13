@@ -5,8 +5,12 @@ const crypto = require('crypto');
 const { isValidObjectId } = require('mongoose');
 
 // Configuração do JWT
-const JWT_SECRET = process.env.JWT_SECRET || 'seu_jwt_secret'; // Use variável de ambiente em produção
-const JWT_EXPIRATION = '1d'; // Token expira em 1 dia
+const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_EXPIRATION = process.env.JWT_EXPIRATION || '1d';
+
+if (!JWT_SECRET) {
+  throw new Error('JWT_SECRET não está definido nas variáveis de ambiente');
+}
 
 const userService = {
   /**

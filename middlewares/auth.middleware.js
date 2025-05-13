@@ -1,7 +1,10 @@
 const jwt = require('jsonwebtoken');
 
 // Configuração do JWT
-const JWT_SECRET = process.env.JWT_SECRET || 'seu_jwt_secret'; // Use variável de ambiente em produção
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET) {
+  throw new Error('JWT_SECRET não está definido nas variáveis de ambiente');
+}
 
 const authMiddleware = {
   /**
