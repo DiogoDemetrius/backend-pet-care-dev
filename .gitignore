@@ -1,0 +1,12 @@
+# filepath: c:\teste-3-pets\backend\.gitignore
+
+# Node.js
+node_modules/
+.env
+
+# Logs
+*.log
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
